@@ -2,6 +2,8 @@ with Interfaces;
 
 package Blum_Blum_Shub is
 
+   use type Interfaces.Unsigned_64;
+
    -- Subtypes for strong typing and domain clarity
    subtype Prime_Type   is Interfaces.Unsigned_64;
    subtype Modulus_Type is Interfaces.Unsigned_64;
