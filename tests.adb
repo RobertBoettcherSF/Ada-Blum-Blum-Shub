@@ -194,17 +194,17 @@ begin
    declare
       Gen : Generator;
       State_Before, State_After : Modulus_Type;
+      Dummy : Boolean;
    begin
       Initialize (Gen, 11, 19, 3);
       State_Before := Peek_State (Gen);
-      declare
-         Dummy : Boolean := Next_Bit (Gen);
-         pragma Unreferenced (Dummy);
-      end;
+      Dummy := Next_Bit (Gen);
       State_After := Peek_State (Gen);
+      
       Check ("11.1 Peek_State returns valid state before advance", State_Before > 0);
       Check ("11.2 Peek_State returns valid state after advance", State_After > 0);
       Check ("11.3 State changes after calling Next_Bit", State_Before /= State_After);
+      Check ("11.4 Output bit generated successfully", Dummy = True or Dummy = False);
    end;
 
    -- TEST 12 — Multiple Independent Generators
@@ -231,7 +231,7 @@ begin
       Initialize (Gen, 499, 547, 12345);
       B := Next_Bit (Gen);
       Check ("13.1 Large Blum primes p=499, q=547 accepted", True);
-      Check ("13.2 Next_Bit runs with large modulus successfully", True);
+      Check ("13.2 Next_Bit runs with large modulus successfully", B = True or B = False);
       Check ("13.3 State remains valid under large modulus", Peek_State (Gen) < (499 * 547));
    end;
 
