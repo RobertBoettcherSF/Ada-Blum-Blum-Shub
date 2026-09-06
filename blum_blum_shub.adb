@@ -113,7 +113,7 @@ package body Blum_Blum_Shub is
       Result : Interfaces.Unsigned_8 := 0;
    begin
       for I in 1 .. 8 loop
-         Result := Interfaces.Unsigned_8'Shift_Left (Result, 1);
+         Result := Interfaces.Shift_Left (Result, 1);
          if Next_Bit (Gen) then
             Result := Result or 1;
          end if;
@@ -129,7 +129,7 @@ package body Blum_Blum_Shub is
       Actual_Count : constant Positive := (if Count > 64 then 64 else Count);
    begin
       for I in 1 .. Actual_Count loop
-         Result := Interfaces.Unsigned_64'Shift_Left (Result, 1);
+         Result := Interfaces.Shift_Left (Result, 1);
          if Next_Bit (Gen) then
             Result := Result or 1;
          end if;
