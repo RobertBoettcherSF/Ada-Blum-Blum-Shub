@@ -1,6 +1,7 @@
-with Interfaces;
-
 package body Blum_Blum_Shub is
+
+   use type Interfaces.Unsigned_8;
+   use type Interfaces.Unsigned_128;
 
    -------------------------------------------------------------------------
    -- Is_Prime
